@@ -48,7 +48,7 @@ values('John','Doe', 'john.doe@email.com','2024-01-15'),
 -- Task 3
 select * from books where publication_year > 1950;
 
-select * from borrowers where EXTRACT(ISOYEAR FROM registration_date) = '2024';
+select * from borrowers where EXTRACT(YEAR FROM registration_date) = '2024';
 
 select sum(stock) as total_stock from books;
 
@@ -71,13 +71,13 @@ select * from books where stock < 5;
 -- Task 6
 select * from books where publication_year < 1960 and price < 10;
 
-select * from borrowers where email like '%@email.com';
+select * from borrowers where email like '%@email.com' and EXTRACT(YEAR FROM registration_date) == '2024';
 
 -- Task 7
 update books set price = price * 1.10;
 select * from books;
 
-delete from borrowers where EXTRACT(ISOYEAR FROM registration_date) < '2023'
+delete from borrowers where EXTRACT(YEAR FROM registration_date) < '2023'
 
 -- Task 8
 select * from books order by price desc limit 5;
